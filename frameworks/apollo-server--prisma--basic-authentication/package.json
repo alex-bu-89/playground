@@ -1,0 +1,25 @@
+{
+  "name": "apollo-server-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "build": "ts-node --transpile-only src/index.ts",
+    "migrate": "prisma migrate save --experimental && prisma migrate up --experimental"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^2.1.0",
+    "apollo-server": "^2.15.0",
+    "graphql": "^15.1.0"
+  },
+  "devDependencies": {
+    "@prisma/cli": "^2.1.0",
+    "@types/node": "^14.0.13",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  }
+}
