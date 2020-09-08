@@ -1,6 +1,8 @@
 module.exports = function (config) {
   // Add a filter using the Config API
-  // ..
+  config.addCollection('posts', (collection) => {
+    return collection.getFilteredByGlob('src/posts/*.md');
+  })
 
   // You can return your Config object (optional).
   return {

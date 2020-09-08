@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  Test
-</body>
-</html>
+---
+layout: layouts/base.html
+welcomeMessage: "Hello world"
+---
+  <h1>{{ welcomeMessage }} eleventy</h1>
+
+  {% for post in collections.posts %}
+    <p><a href={{ post.url }}>Link to blog</a> {{ post.data.title }}</p>
+  {% endfor %}
+
+  <ul>
+    {% for todo in todos.todos %}
+      <li>{{ todo.title }}</li>
+    {% endfor %}
+  </ul>
