@@ -1,0 +1,14 @@
+---
+title: "Hello world"
+date: "2020-09-07"
+layout: layouts/base.html
+pagination:
+    data: todos
+    size: 1
+    alias: todo
+permalink: "todos/{{ todo.id | slug }}/"
+---
+
+{{ todo.title }}
+
+

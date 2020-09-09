@@ -9,7 +9,7 @@ welcomeMessage: "Hello world"
   {% endfor %}
 
   <ul>
-    {% for todo in todos.todos %}
-      <li>{{ todo.title }}</li>
+    {% for todo in todos %}
+      <li><a href="/todos/{{todo.id}}">{{ todo.title }}</a></li>
     {% endfor %}
   </ul>
