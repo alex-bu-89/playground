@@ -1,3 +1,7 @@
+table tbody tr {
+    cursor:move;
+}
+
 .dragging {
     opacity: .5;
 }
