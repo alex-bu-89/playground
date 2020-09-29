@@ -9,7 +9,8 @@ function listenerDragEnd(e) {
 }
 
 function listenerDragOver(e) {
-    const afterElement = getDragAfterElement(e.clientY);
+    const afterElement = e.currentTarget;
+    console.log('----------', e.currentTarget);
     const dragging = document.querySelector('.dragging');
     
     // console.log('---------- listenerDragOver', e.clientY);
@@ -18,10 +19,16 @@ function listenerDragOver(e) {
 function getDragAfterElement(y) {
     const draggableEls = [...document.querySelectorAll('.draggable:not(.dragging)')];
 
-    draggableEls.reduce((closest, child) => {
-        // const box = child.getBoundingClientRect();
-        // console.log('----------', box);
-    }, { offset: Number.POSITIVE_INFINITY });
+    return draggableEls.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+
+        if (offset < 0 && offset > closest.offset) {
+            return { offset: offset, element: child }
+        } else {
+            return closest
+        }
+    }, { offset: Number.POSITIVE_INFINITY }).element;
 }
 
 function main() {
