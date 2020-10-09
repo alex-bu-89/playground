@@ -1,22 +1,25 @@
 function listenerDragStart(e) {
     e.target.classList.add('dragging');
-    console.log('---------- listenerDragStart', e.currentTarget);
 }
 
 function listenerDragEnd(e) {
     e.target.classList.remove('dragging');
-    console.log('---------- listenerDragEnd', e.currentTarget);
 }
 
 function listenerDragOver(e) {
-    const afterElement = e.currentTarget;
-    console.log('----------', e.currentTarget);
-    const dragging = document.querySelector('.dragging');
-    
-    // console.log('---------- listenerDragOver', e.clientY);
+    e.preventDefault();
+    const container = e.currentTarget;
+    const afterElement = getDragAfterElement(container, e.clientY);
+    const draggingEl = document.querySelector('.dragging');
+
+    if (afterElement == null) {
+        container.appendChild(draggingEl);
+    } else {
+        container.insertBefore(draggingEl, afterElement);
+    }
 }
 
-function getDragAfterElement(y) {
+function getDragAfterElement(container, y) {
     const draggableEls = [...document.querySelectorAll('.draggable:not(.dragging)')];
 
     return draggableEls.reduce((closest, child) => {
@@ -28,18 +31,21 @@ function getDragAfterElement(y) {
         } else {
             return closest
         }
-    }, { offset: Number.POSITIVE_INFINITY }).element;
+    }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
 
 function main() {
     const rows = document.querySelectorAll('tbody > tr');
-
+    const containers = document.querySelectorAll('table > tbody');
+    
     rows.forEach((row) => {
         row.classList.add('draggable');
-
         row.addEventListener('dragstart', listenerDragStart, false);
         row.addEventListener('dragend', listenerDragEnd, false);
-        row.addEventListener('dragover', listenerDragOver, false);
+    });
+
+    containers.forEach((container) => {
+        container.addEventListener('dragover', listenerDragOver, false);
     });
 }
 
