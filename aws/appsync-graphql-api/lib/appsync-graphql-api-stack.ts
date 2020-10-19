@@ -4,7 +4,7 @@ import * as ddb from '@aws-cdk/aws-dynamodb';
 import * as lambda from '@aws-cdk/aws-lambda';
 
 // lib/appsync-cdk-app-stack.ts
-export class AppsyncCdkAppStack extends cdk.Stack {
+export class AppsyncGraphqlApiStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
