@@ -4,23 +4,14 @@ import AutoComplete from './components/AutoComplete/AutoComplete';
 import { useFetch } from './hooks/useFetch';
 
 function App() {
-  const [ response, loading ] = useFetch('https://jsonplaceholder.typicode.com/users');
-  const userData = {
-    src: response
-  }
+  const [ response ] = useFetch('https://jsonplaceholder.typicode.com/users');
 
   return (
-    <div className="container">
-      <h2>Tiny autocomplete field</h2>
-      {
-        loading
-          ? <p>loading data</p>
-          : (
-            <AutoComplete
-              data={ userData }
-            ></AutoComplete>
-          )
-      }
+    <div className="container content">
+      <h1>Tiny autocomplete field</h1>
+      <AutoComplete
+        data={ response }
+      ></AutoComplete>
     </div>
   );
 }
