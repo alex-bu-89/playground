@@ -18,7 +18,6 @@ function AutoComplete(params: AutoCompleteConfig) {
    */
   const onInputChange = debounce((e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
-    console.log('------------ query', query);
     run(query);
   }, debounceTime);
 
@@ -44,12 +43,7 @@ function AutoComplete(params: AutoCompleteConfig) {
 
     const list = data.filter((record: any) => {
       const recordValueLower = record[key].toLowerCase();
-
-      if (recordValueLower.includes(queryLower)) {
-        return true;
-      }
-
-      return false;
+      return recordValueLower.includes(queryLower) ? true : false;
     });
 
     console.log('------------ list', list);
