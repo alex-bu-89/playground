@@ -1,6 +1,6 @@
 
 export interface AutoCompleteConfig {
   data: Promise<any> | any;
-  keys?: string[];
+  keys: string[];
   debounceTime?: number;
 }

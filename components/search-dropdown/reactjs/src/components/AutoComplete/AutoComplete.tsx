@@ -1,9 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './AutoComplete.scss';
 import { AutoCompleteConfig } from './AutoComplete.d';
-// import { debounce } from './AutoCompleteUtil';
 import debounce from 'lodash.debounce';
-import { SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG } from 'constants';
 
 function AutoComplete(params: AutoCompleteConfig) {
   const inputEl = useRef(null);
@@ -24,23 +22,38 @@ function AutoComplete(params: AutoCompleteConfig) {
     run(query);
   }, debounceTime);
 
+  /**
+   * Starts searching process
+   * @param query
+   */
   function run(query: string) {
-    if (keys.length > 0) {
-      for (const key of keys) {
-        search(data[key]);
-      }
-    } else {
-      for (const record of data) {
-        search(record);
-      }
+    if (!keys.length) throw new Error('keys prop must be set');
+
+    for (const key of keys) {
+      search(query, key);
     }
   }
 
-  function search(record: string) {
+  /**
+   * Searches matching records by key
+   * @param query
+   * @param key
+   */
+  function search(query: string, key: string) {
+    const queryLower = query.toLowerCase();
 
+    const list = data.filter((record: any) => {
+      const recordValueLower = record[key].toLowerCase();
+
+      if (recordValueLower.includes(queryLower)) {
+        return true;
+      }
+
+      return false;
+    });
+
+    console.log('------------ list', list);
   }
-
-  console.log('------------ data', data);
 
   return (
     <div className="AutoComplete">

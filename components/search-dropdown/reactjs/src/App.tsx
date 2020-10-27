@@ -11,6 +11,7 @@ function App() {
       <h1>Tiny autocomplete field</h1>
       <AutoComplete
         data={ response }
+        keys={['name']}
       ></AutoComplete>
     </div>
   );
