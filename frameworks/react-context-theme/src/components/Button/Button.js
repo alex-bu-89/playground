@@ -11,9 +11,9 @@ export function Button(props) {
             onClick={props.onClick}
             className="Button"
             style={{
-              backgroundColor: theme.background,
-              borderColor: theme.background,
-              color: theme.foreground,
+              backgroundColor: theme.foreground,
+              borderColor: theme.foreground,
+              color: theme.background,
             }}
           >
             { props.children }
