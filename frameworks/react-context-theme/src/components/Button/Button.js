@@ -6,7 +6,6 @@ export function Button(props) {
   return (
     <ThemeContext.Consumer>
       {((theme) => {
-        console.log('-------> theme', theme);
         return (
           <button 
             onClick={props.onClick}
