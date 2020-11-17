@@ -4,7 +4,7 @@
 </template>
 
 <script>
-  import Payment from './components/Payment.vue'
+  import Payment from './components/Payment/Payment.vue'
   import Header from './components/Header.vue'
 
   export default {
