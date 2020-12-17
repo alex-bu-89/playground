@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { TodoContext } from '../../context/todoContext';
 
 function TodoItem({ todo, index, onChange }) {
+    const { removeTodo } = useContext(TodoContext);
+
     return (
         <li className={`todo-item${ todo.completed ? ' todo-item--done' : '' }`}>
             <span>
@@ -14,7 +17,12 @@ function TodoItem({ todo, index, onChange }) {
                 { todo.title }
             </span>
 
-            <button className="todo-item__remove-btn">&times;</button>
+            <button 
+                className="todo-item__remove-btn"
+                onClick={ () => { removeTodo(todo.id) } }
+            >
+                &times;
+            </button>
         </li>
     )
 } 

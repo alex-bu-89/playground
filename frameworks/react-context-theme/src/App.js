@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { ThemeContext, themes } from './context/themeContext';
 import { ImageContext } from './context/imageContext';
+import { TodoContext } from './context/todoContext';
 import Button from './components/Button/';
 import ImageList from './components/Image/ImageList';
 import TodoList from './components/Todo/TodoList';
+import AddTodo from './components/Todo/AddTodo';
 
 import './App.css';
 
@@ -41,24 +43,37 @@ function App() {
     }));
   }
 
+  const removeTodo = (id) => {
+    setTodo(todos.filter((todo) => todo.id !== id));
+  }
+
+  const addTodo = (title) => {
+    setTodo([...todos, { id: todos.length + 1, completed: false, title, }]);
+  }
+
   return (
     <ThemeContext.Provider value={ theme }>
       <ImageContext.Provider value={ images }>
-        <div className="App" style={{
-          background: theme.background,
-          color: theme.foreground
-        }}>
-          <div className="container">
-            <h1>Todo App</h1>
-            <TodoList 
-              todos={ todos }
-              onToggle={ toggleTodo }
-            />
-            <Button onClick={toggleTheme}>Toogle Switch</Button>
-            <ImageList></ImageList>
+        <TodoContext.Provider value={{ removeTodo }}>
+          <div className="App" style={{
+            background: theme.background,
+            color: theme.foreground
+          }}>
+            <div className="container">
+              <h1>Todo App</h1>
+              { todos.length 
+                ? <TodoList 
+                    todos={ todos }
+                    onToggle={ toggleTodo }
+                  />
+                : <p>No Todos</p>
+              }
+              <AddTodo onCreate={ addTodo } />
+              <Button onClick={toggleTheme}>Toogle Switch</Button>
+              <ImageList></ImageList>
+            </div>
           </div>
-
-        </div>
+        </TodoContext.Provider>
       </ImageContext.Provider>
     </ThemeContext.Provider>
   );

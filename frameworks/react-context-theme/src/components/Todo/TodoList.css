@@ -30,6 +30,10 @@
     justify-content: center;
 }
 
-.todo-item--done {
+.todo-item--done span {
     text-decoration: line-through;
+}
+
+.add-todo {
+    margin-top: 1.5rem;
 }
