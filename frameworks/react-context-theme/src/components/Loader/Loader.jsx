@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import './Loader.css';
-import PropTypes from 'prop-types';
+import { ThemeContext } from '../../context/themeContext';
 
 function Loader() {
+    const theme = useContext(ThemeContext);
+
+    useEffect(() => {
+        const spinner = document.querySelector('.lds-spinner');
+        spinner.style.setProperty('--background', theme.foreground)
+    })
+
     return (
-        <div class="lds-spinner">
+        <div className="lds-spinner">
             <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
         </div>
     )

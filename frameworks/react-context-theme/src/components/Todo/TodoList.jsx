@@ -1,28 +1,44 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
+import AddTodo from '../Todo/AddTodo';
+import { TodoContext } from '../../context/todoContext';
 import './TodoList.css';
 
-function TodoList({ todos, onToggle }) {
+function TodoList({ todos }) {
+    const { addTodo, toggleTodo } = useContext(TodoContext);
+
+    const renderTodoList = () => {
+        return (
+            todos.map((todo, i) => (
+                <TodoItem
+                    key={ todo.id }
+                    todo={ todo }
+                    index={ i }
+                    onChange={ toggleTodo }
+                />
+            ))
+        )
+    }
+
     return (
-        <ul className="todo-list">
+        <div className="todo-list">
             {
-                todos.map((todo, i) => (
-                    <TodoItem 
-                        key={ todo.id }
-                        todo={ todo }
-                        index={ i }
-                        onChange={ onToggle }
-                    />
-                ))
+                todos.length ? (
+                    <div>
+                        { renderTodoList() }
+                        <AddTodo onCreate={addTodo} />
+                    </div>
+                ) : (
+                    <p>No Todos</p>
+                )
             }
-        </ul>
-    ) 
+        </div>
+    )
 }
 
 TodoList.propTypes = {
     todos: PropTypes.arrayOf(PropTypes.object).isRequired,
-    onToggle: PropTypes.func.isRequired,
 }
 
 export default TodoList;
