@@ -1,7 +1,28 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function TodoItem({ todo }) {
+function TodoItem({ todo, index, onChange }) {
     return (
-        <li>{ todo.title }</li>
+        <li className={`todo-item${ todo.completed ? ' todo-item--done' : '' }`}>
+            <span>
+                <input 
+                    type="checkbox"
+                    checked={ todo.completed ? true : false }
+                    onChange={() => { onChange(todo.id); }}
+                />
+                <strong>{ index + 1 } </strong>
+                { todo.title }
+            </span>
+
+            <button className="todo-item__remove-btn">&times;</button>
+        </li>
     )
 } 
+
+TodoItem.propTypes = {
+    todo: PropTypes.object.isRequired,
+    index: PropTypes.number.isRequired,
+    onChange: PropTypes.func.isRequired
+}
+
+export default TodoItem

@@ -20,7 +20,7 @@ function App() {
   const [todos, setTodo] = useState(
     [
       { id: 1, completed: false, title: 'Some todo 1' },
-      { id: 2, completed: false, title: 'Some todo 2' },
+      { id: 2, completed: true, title: 'Some todo 2' },
       { id: 3, completed: false, title: 'Some todo 3' },
     ]
   );
@@ -31,17 +31,29 @@ function App() {
       return newTheme;
     });
   }
+  
+  const toggleTodo = (id) => {
+    setTodo(todos.map((todo) => {
+      return {
+        ...todo,
+        completed: todo.id === id ? !todo.completed : todo.completed,
+      }
+    }));
+  }
 
   return (
-    <ThemeContext.Provider value={theme}>
-      <ImageContext.Provider value={images}>
+    <ThemeContext.Provider value={ theme }>
+      <ImageContext.Provider value={ images }>
         <div className="App" style={{
           background: theme.background,
           color: theme.foreground
         }}>
           <div className="container">
             <h1>Todo App</h1>
-            <TodoList todos={todos} />
+            <TodoList 
+              todos={ todos }
+              onToggle={ toggleTodo }
+            />
             <Button onClick={toggleTheme}>Toogle Switch</Button>
             <ImageList></ImageList>
           </div>

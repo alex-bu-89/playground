@@ -3,3 +3,33 @@
     margin: 0;
     padding-left: 0;
 }
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: .5rem;
+}
+
+.todo-item input {
+    margin-right: 1rem;
+}
+
+.todo-item__remove-btn {
+    background: red;
+    border-radius: 50%;
+    color: #fff;
+    border: none;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo-item--done {
+    text-decoration: line-through;
+}
