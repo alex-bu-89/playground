@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ThemeContext, themes } from './context/themeContext';
 import { ImageContext } from './context/imageContext';
 import { TodoContext } from './context/todoContext';
@@ -19,13 +19,13 @@ function App() {
       { title: 'Image 4', src: 'https://via.placeholder.com/200/000000/FFFFFF/?text=IPaddress.net' },
     ]
   );
-  const [todos, setTodo] = useState(
-    [
-      { id: 1, completed: false, title: 'Some todo 1' },
-      { id: 2, completed: true, title: 'Some todo 2' },
-      { id: 3, completed: false, title: 'Some todo 3' },
-    ]
-  );
+  const [todos, setTodo] = useState([]);
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/todos?_limit=5')
+      .then((response) => response.json())
+      .then((todos) => setTimeout(() => {setTodo(todos)}, 2000))
+  }, [])
 
   const toggleTheme = (e) => {
     setTheme((oldState) => {
@@ -33,7 +33,7 @@ function App() {
       return newTheme;
     });
   }
-  
+
   const toggleTodo = (id) => {
     setTodo(todos.map((todo) => {
       return {
@@ -61,8 +61,8 @@ function App() {
           }}>
             <div className="container">
               <h1>Todo App</h1>
-              { todos.length 
-                ? <TodoList 
+              { todos.length
+                ? <TodoList
                     todos={ todos }
                     onToggle={ toggleTodo }
                   />
