@@ -5,6 +5,8 @@ import AddTodo from '../Todo/AddTodo';
 import { TodoContext } from '../../context/todoContext';
 import './TodoList.css';
 
+// const AddTodo = React.lazy(() => { import('../Todo/AddTodo') })
+
 function TodoList({ todos }) {
     const { addTodo, toggleTodo } = useContext(TodoContext);
 
