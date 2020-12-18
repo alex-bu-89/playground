@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeContext, themes } from './context/themeContext';
 import { ImageContext } from './context/imageContext';
-import { TodoContext } from './context/todoContext';
+import { TodoContext } from './components/Todo/TodoContext';
 import Button from './components/Button/';
 import ImageList from './components/Image/ImageList';
 import TodoList from './components/Todo/TodoList';

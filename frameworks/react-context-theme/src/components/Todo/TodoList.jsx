@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 import AddTodo from '../Todo/AddTodo';
-import { TodoContext } from '../../context/todoContext';
+import { TodoContext } from './TodoContext';
 import './TodoList.css';
 
 // const AddTodo = React.lazy(() => { import('../Todo/AddTodo') })
@@ -23,18 +23,12 @@ function TodoList({ todos }) {
         )
     }
 
+    if (!todos.length) return <p>No Todos</p>
+
     return (
         <div className="todo-list">
-            {
-                todos.length ? (
-                    <div>
-                        { renderTodoList() }
-                        <AddTodo onCreate={addTodo} />
-                    </div>
-                ) : (
-                    <p>No Todos</p>
-                )
-            }
+            { renderTodoList() }
+            <AddTodo onCreate={addTodo} />
         </div>
     )
 }

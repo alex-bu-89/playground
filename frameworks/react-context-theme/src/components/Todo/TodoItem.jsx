@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { TodoContext } from '../../context/todoContext';
+import { TodoContext } from './TodoContext';
 
 function TodoItem({ todo, index, onChange }) {
     const { removeTodo } = useContext(TodoContext);
@@ -8,7 +8,7 @@ function TodoItem({ todo, index, onChange }) {
     return (
         <li className={`todo-item${ todo.completed ? ' todo-item--done' : '' }`}>
             <span>
-                <input 
+                <input
                     type="checkbox"
                     checked={ todo.completed ? true : false }
                     onChange={() => { onChange(todo.id); }}
@@ -17,7 +17,7 @@ function TodoItem({ todo, index, onChange }) {
                 { todo.title }
             </span>
 
-            <button 
+            <button
                 className="todo-item__remove-btn"
                 onClick={ () => { removeTodo(todo.id) } }
             >
@@ -25,7 +25,7 @@ function TodoItem({ todo, index, onChange }) {
             </button>
         </li>
     )
-} 
+}
 
 TodoItem.propTypes = {
     todo: PropTypes.object.isRequired,
