@@ -11,4 +11,4 @@ const top5Words = _.flow([
     _.fromPairs,
 ]);
 
-console.log('------------>', top5Words(lukomorie));
+console.log(top5Words(lukomorie));
