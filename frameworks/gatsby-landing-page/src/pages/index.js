@@ -1,11 +1,12 @@
-import React from "react"
+import * as React from "react"
 
-export default () => {
+const IndexPage = () => {
   return (
-    <>
-      <h1>Hello Gatsby!</h1>
-      <p>What a world.</p>
-      <img src="https://source.unsplash.com/random/400x200" alt="" />
-    </>
+    <main>
+      <h1>Hello.</h1>
+      <h2>I'm a sub heading</h2>
+    </main>
   )
 }
+
+export default IndexPage
