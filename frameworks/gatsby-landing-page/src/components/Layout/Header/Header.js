@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
+import styles from './Header.module.scss';
+
 const ListLink = (props) => (
   <li style={{ display: `inline-block`, marginRight: `1rem` }}>
-    <Link to={props.to}>{props.children}</Link>
+    <Link className={styles.link} to={props.to}>{props.children}</Link>
   </li>
 );
 
 const Layout = () => {
   return (
-    <header style={{ marginBottom: `1.5rem` }}>
+    <header className={styles.header}>
       <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
         <h3 style={{ display: `inline` }}>MySweetSite</h3>
       </Link>
