@@ -5,17 +5,33 @@ import styles from './Header.module.scss';
 
 const ListLink = (props) => (
   <li className={styles.navItem}>
-    <Link className={styles.navLink} activeClassName={styles.activeNavLink} to={props.to}>
+    <Link
+      className={styles.navLink}
+      activeClassName={styles.activeNavLink}
+      to={props.to}
+    >
       {props.children}
     </Link>
   </li>
 );
 
 const Header = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          author
+          description
+          title
+        }
+      }
+    }
+  `);
+
   return (
     <header className={styles.header}>
       <Link to="/" className={styles.logo}>
-        <h3 style={{ display: `inline` }}>MySweetSite</h3>
+        <h3 style={{ display: `inline` }}>{ data.site.siteMetadata.title }</h3>
       </Link>
       <nav className={styles.nav}>
         <ListLink to="/">Home</ListLink>
