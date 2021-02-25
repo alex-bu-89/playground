@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, graphql, useStaticQuery } from 'gatsby';
 
 import styles from './Header.module.scss';
 
@@ -11,7 +11,7 @@ const ListLink = (props) => (
   </li>
 );
 
-const Layout = () => {
+const Header = () => {
   return (
     <header className={styles.header}>
       <Link to="/" className={styles.logo}>
@@ -26,4 +26,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default Header;
