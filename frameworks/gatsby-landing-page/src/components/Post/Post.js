@@ -1,5 +1,5 @@
 import * as React from 'react';
-import style from './Post.module.css';
+import style from './Post.module.scss';
 import { Link } from 'gatsby';
 
 const Post = ({ data }) => {
