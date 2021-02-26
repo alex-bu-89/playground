@@ -12,7 +12,9 @@ const toKebabCase = (str) => {
 const PostList = ({ posts }) => {
   return posts.map((post) => {
     const postMeta = post.node.frontmatter;
-    return <Post data={postMeta} key={`${toKebabCase(postMeta.title)}`} />;
+    const slug = post.node.fields.slug;
+    const postData = { ...postMeta, ...{ slug } };
+    return <Post data={postData} key={`${toKebabCase(postMeta.title)}`} />;
   });
 };
 

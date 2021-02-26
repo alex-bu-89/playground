@@ -9,7 +9,7 @@ const BlogPage = ({ data }) => {
     <Layout>
       <main>
         <h1>My Blog</h1>
-        <PostList posts={posts}/>
+        <PostList posts={posts} />
       </main>
     </Layout>
   );
@@ -26,6 +26,9 @@ export const query = graphql`
           }
           html
           excerpt
+          fields {
+            slug
+          }
         }
       }
     }
