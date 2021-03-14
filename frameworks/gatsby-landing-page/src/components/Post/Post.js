@@ -1,13 +1,13 @@
 import * as React from 'react';
-import style from './Post.module.scss';
 import { Link } from 'gatsby';
+import * as styles from './Post.module.scss';
 
 const Post = ({ data }) => {
   return (
-    <section className={style.post}>
+    <section className={styles.post}>
       <Link to={`/blog/${data.slug}`}>
-        <h2 className={style.title}>{data.title}</h2>
-        <p className={style.date}>{data.date}</p>
+        <h2 className={styles.title}>{data.title}</h2>
+        <p className={styles.date}>{data.date}</p>
       </Link>
     </section>
   );

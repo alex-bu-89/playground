@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
-
-import styles from './Header.module.scss';
+import * as styles from './Header.module.scss';
 
 const ListLink = (props) => (
   <li className={styles.navItem}>
