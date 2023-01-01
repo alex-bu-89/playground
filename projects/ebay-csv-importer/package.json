@@ -22,9 +22,9 @@
     "chrome-launcher": "^0.13.3",
     "fork-ts-checker-webpack-plugin": "^4.1.6",
     "serverless-webpack": "^5.3.2",
-    "ts-loader": "^7.0.5",
+    "ts-loader": "^9.4.2",
     "typescript": "^3.9.5",
-    "webpack": "^4.43.0",
+    "webpack": "^5.75.0",
     "webpack-node-externals": "^1.7.2"
   },
   "author": "Alexander Buyanov",
